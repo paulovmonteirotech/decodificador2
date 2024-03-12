@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decodificador</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('cadeado1.jpg'); /* Image background */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background */
+            background-repeat: no-repeat; /* Do not repeat the background */
+            color: #fff; /* Text color */
+        }
+        header {
+            background-color: rgba(52, 58, 64, 0.8); /* Background color with opacity */
+            padding: 15px; /* Reduced padding for header */
+        }
+        footer {
+            background-color: rgba(52, 58, 64, 0.8); /* Background color with opacity */
+            color: #fff;
+            padding: 10px 0;
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        @media only screen and (min-width: 2490px ){
+            footer{
+                padding: 5rem;
+            };
+            .row{ padding: auto;
+            };
+        }
+        @media only screen and (max-width: 766px) {
+            footer{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="text-center">
+        <h1>Decodificador</h1>
+    </header>
+    <main class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <textarea class="form-control mb-3" id="texto" rows="10" placeholder="Escreva aqui!"></textarea>
+            </div>
+            <div class="col-md-6">
+                <textarea class="form-control mb-3" id="resultado" rows="10" readonly placeholder="SEU RESULTADO SAIRA AQUI!"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-primary btn-block mb-2" type="button" name="opcao" value="criptografar" onclick="processarTexto('criptografar')">Criptografar</button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-info btn-block mb-2" type="button" name="opcao" value="descriptografar" onclick="processarTexto('descriptografar')">Descriptografar</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-secondary btn-block" id="copy">Copiar Resultado</button>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center fixed-bottom">
+        <h6>Paulo Monteiro</h6>
+    </footer>
+    <div id="notification" class="notification">Mensagem copiada com sucesso!</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        const textResultado = document.getElementById("resultado");
+        const copyButton = document.getElementById('copy');
+        const notification = document.getElementById('notification');
+
+        copyButton.addEventListener('click', ()=> {
+            textResultado.select();
+            document.execCommand('copy');
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2000); // Hide notification after 2 seconds
+        });
+    </script>
+    <script src="app2.js"></script>
+</body>
+</html>
